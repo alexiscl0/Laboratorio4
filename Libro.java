@@ -14,6 +14,7 @@ public class Libro {
         setAutor(sc.nextLine());
         System.out.println("Ingresar ISBM(4 cifras)");
         setISBM(sc.nextInt());
+        setDisponible(true);
     }
 
     public void setTitulo(String Titulo) {
