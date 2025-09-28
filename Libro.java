@@ -5,15 +5,14 @@ public class Libro {
     private String Autor;
     private int ISBM;
     private boolean disponible;
-    private Scanner sc;
+    private Scanner sc=new Scanner(System.in);
 
     public Libro() {
         System.out.println("Ingrese titulo del libro: ");
         setTitulo(sc.nextLine());
         System.out.println("Ingresar autor del libro: ");
         setAutor(sc.nextLine());
-        System.out.println("Ingresar ISBM(4 cifras)");
-        setISBM(sc.nextInt());
+        setISBM();
         setDisponible(true);
     }
 
@@ -29,17 +28,15 @@ public class Libro {
         this.disponible = disponible;
     }
 
-    public void setISBM(int ISBM) {
-        boolean correcto;
+    public void setISBM() {
+        int valor;
         do {
-            correcto = false;
-            if (ISBM > 999) {
-                this.ISBM = ISBM;
-                correcto = true;
-                break;
-            }
-        } while (correcto == false);
+           System.out.print("Ingrese un ISBM (mayor a 999): ");
+           valor = sc.nextInt();
+        } while (valor <= 999);
+        this.ISBM = valor;
     }
+
 
     public String getTitulo() {
         return this.Titulo;
@@ -59,9 +56,9 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Titulo\t" + getTitulo() + "\n"
-                + "Autor\t" + getAutor() + "\n"
-                + "ISBM\t" + getISBM() + "\n" +
-                "Disponible\t" + getDisponible();
+        return "   - Titulo\t" + getTitulo() + "\n"
+                + "   - Autor\t" + getAutor() + "\n"
+                + "   - ISBM\t" + getISBM() + "\n" +
+                "   - Disponible\t" + getDisponible();
     }
 }
