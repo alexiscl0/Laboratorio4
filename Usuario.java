@@ -29,7 +29,26 @@ public class Usuario {
     }
 
     public void DevolverLibro(){
-        
+        String confirmacion;
+        boolean encontrado=false;
+        do{
+            System.out.println("Que libros desee devolver");
+            String nombre=sc.nextLine();
+            for (int i = 0; i < libroTomado.size(); i++) {
+                if(libroTomado.get(i).getTitulo().equals(nombre)){
+                    Libro libro = libroTomado.get(i); 
+                    libro.setDisponible(true);
+                    libroTomado.remove(i);          
+                    encontrado = true;
+                    System.out.println("Has devuelto el libro: " + libro.getTitulo());
+                    break;
+                }
+            }
+            if(!encontrado)
+                System.out.println("Libro no encontrado con ese TITULO");
+            System.out.println("Desea devolver más libros?");
+            confirmacion=sc.nextLine().toUpperCase();
+        }while(confirmacion.equals("SI"));
     }
 
     public void VerificarLibro(ArrayList<Libro> libros){
